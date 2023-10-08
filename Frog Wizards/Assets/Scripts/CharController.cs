@@ -1,46 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public class CharController : MonoBehaviour
-{
-    [Header("Inscribed")]
-    public float moveSpeed = 5.0f; // Adjust this to control movement speed
-    private Vector3 moveDirection = Vector3.zero;
-
-    void Update()
-    {
-         // Check for key presses and set the movement direction
-        if (Input.GetKey(KeyCode.W))
-        {
-            moveDirection = Vector3.forward;
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            moveDirection = Vector3.back;
-        }
-        else
-        {
-            moveDirection.z = 0; // Release W and S keys, stop forward/backward movement
-        }
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            moveDirection += Vector3.left;
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            moveDirection += Vector3.right;
-        }
-        else
-        {
-            moveDirection.x = 0; // Release A and D keys, stop left/right movement
-        }
-
-        // Normalize the movement vector to ensure consistent speed
-        moveDirection.Normalize();
-        
-        // Move the player
-        transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+using System.Collections;
+ 
+public class CharController : MonoBehaviour {
+    public CharacterController charControl;
+    public Rigidbody rb;
+    public float speed = 10;
+    public float jumpForce = 10;
+    bool isGrounded;
+    void Start(){
     }
+
+    void Update(){
+        Move();
+        Jump();
+        //lmb: meleeAttack()
+        //rmb: magicAttack()
+
+    }
+
+    private void Move(){
+        float hMove = Input.GetAxis("Horizontal"); //take in horizontal
+        float vMove = Input.GetAxis("Vertical"); //and vertical axis' 
+
+        Vector3 move = transform.forward * vMove + transform.right * hMove; //apply them to a transform
+        charControl.Move(speed * Time.deltaTime * move); //use this transform to Move
+    }
+
+    private void Jump(){
+        if(Input.GetKeyDown(KeyCode.Space)) //if space pressed
+        {
+            Debug.Log("Space pressed");
+            rb.AddForce(Vector3.up * jumpForce); //apply upward force to rigidbody
+            Debug.Log("added force");
+        }
+    }
+
 }
