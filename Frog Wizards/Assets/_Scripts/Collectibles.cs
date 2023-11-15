@@ -6,20 +6,20 @@ public class Collectibles : MonoBehaviour
 {
     private bool inCollision = false;
     private PlaceCollectibles placeCollectibles;
+    private Inventory inventory;
     // Start is called before the first frame update
     void Start()
     {
         placeCollectibles = GameObject.Find("Environment").GetComponent<PlaceCollectibles>();
+        inventory = GameObject.Find("Character").GetComponent<Inventory>();
     }
 
     // Update is called once per frame
     void Update()
     { 
       if(inCollision && (Input.GetKeyDown(KeyCode.E))){
-        Debug.Log("e key was pressed in collider");
-        //increase player count for item 
-        Debug.Log("placeCol: " + placeCollectibles);
         placeCollectibles.currentCollectibles--;
+        inventory.addItem(this.gameObject);
         Destroy(this.gameObject);
       }
     }
@@ -28,7 +28,6 @@ public class Collectibles : MonoBehaviour
     {
        if (collider.gameObject.tag == "Player"){
         inCollision = true;
-        Debug.Log("Collision between player and collectible. inCol: " + inCollision);
         //display collection to player
        }    
     }
@@ -37,7 +36,6 @@ public class Collectibles : MonoBehaviour
     {
     if (collider.gameObject.tag == "Player"){
         inCollision = false;
-        Debug.Log("Collision exit between player and collectible. inCol: " + inCollision);
         //stop collection display
        } 
     }

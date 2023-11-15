@@ -12,12 +12,13 @@ public class CharController : MonoBehaviour {
     float gravity = 9.8f;
     //bool isGrounded;
     Vector3 moveDir;
+    public int health;
+    public int maxHealth = 30;
     void Start(){
     }
 
     void Update(){
         Move();
-        //Jump();
         //lmb: meleeAttack()
         //rmb: magicAttack()
 

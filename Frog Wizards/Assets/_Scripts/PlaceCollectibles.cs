@@ -38,13 +38,10 @@ public class PlaceCollectibles : MonoBehaviour
         {
             // Use Random.Range(0, 5) to get a random index between 0 and 4.
             int randomIndex = Random.Range(0, 5);
-            Debug.Log("Collectibles array length: " + collectibles.Length);
             GameObject collectibleToPlace = collectibles[randomIndex];
             GameObject collectibleNew = Instantiate(collectibleToPlace, coords, Quaternion.identity) as GameObject;
-            Debug.Log(collectibleNew);
             collectibleNew.transform.parent = gameObject.transform;
             currentCollectibles++;
-            Debug.Log(currentCollectibles);
         }
     }
 }
