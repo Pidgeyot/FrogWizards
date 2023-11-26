@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
  
 public class CharController : MonoBehaviour {
     public CharacterController charControl;
@@ -12,16 +13,20 @@ public class CharController : MonoBehaviour {
     float gravity = 9.8f;
     //bool isGrounded;
     Vector3 moveDir;
-    public int health;
-    public int maxHealth = 30;
+    public int health = 11;
+    public int maxHealth = 11;
+    private Image healthSprite;
+
     void Start(){
+        healthSprite = GameObject.Find("HealthSprite").GetComponent<Image>();
+        Debug.Log(healthSprite);
     }
 
     void Update(){
         Move();
-        //lmb: meleeAttack()
-        //rmb: magicAttack()
-
+        if(Input.GetMouseButtonDown(0)) LMBAttack();
+        if(Input.GetMouseButtonDown(1)) RMBAttack();
+        CheckHealth();
     }
 
     private void Move(){
@@ -50,8 +55,18 @@ public class CharController : MonoBehaviour {
 
         if (hMove != 0|| vMove != 0 || vSpeed != 0){
         charControl.Move(speed * Time.deltaTime * moveDir.normalized); //use this transform to Move
-        }
+        }  
+    }
 
-        
+    private void LMBAttack(){
+        Debug.Log("LMB Attack");
+    }
+
+    private void RMBAttack(){
+        Debug.Log("RMB Attack");
+    }
+
+    private void CheckHealth(){
+        healthSprite.sprite = Resources.Load<Sprite>("Health" + health);
     }
 }
