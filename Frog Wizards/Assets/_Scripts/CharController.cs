@@ -1,10 +1,13 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+
  
 public class CharController : MonoBehaviour {
     public CharacterController charControl;
     public Transform cam;
+    public Transform frogPos;
+    public GameObject projectile;
     public float speed = 10;
     public float turnSmooth = 0.1f;
     float turnSmoothVel;
@@ -16,6 +19,7 @@ public class CharController : MonoBehaviour {
     public int health = 11;
     public int maxHealth = 11;
     private Image healthSprite;
+    
 
     void Start(){
         healthSprite = GameObject.Find("HealthSprite").GetComponent<Image>();
@@ -59,7 +63,7 @@ public class CharController : MonoBehaviour {
     }
 
     private void LMBAttack(){
-        Debug.Log("LMB Attack");
+        Instantiate(projectile, frogPos.position + new Vector3(0, 0.5f, 0.5f), Quaternion.identity);
     }
 
     private void RMBAttack(){

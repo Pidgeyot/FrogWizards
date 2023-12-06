@@ -9,6 +9,7 @@ TagManager:
   - FlyAgaric
   - IndigoMushroom
   - Periwinkle
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -16,8 +17,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Projectile
   - 
   - 
   - 
