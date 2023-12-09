@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    private Transform frogPos;
     private float timer = 0;
+    private Enemy enemy;
+
+    void Start(){
+        frogPos = GameObject.Find("FrogModel").GetComponent<Transform>();
+    }
   
     // Update is called once per frame
     void Update()
     {
-        this.gameObject.GetComponent<Rigidbody>().velocity = transform.forward * 10;
+        this.gameObject.GetComponent<Rigidbody>().velocity = -frogPos.transform.up * 10;
         timer += Time.deltaTime;
         if (timer > 5){
             Destroy(this.gameObject);
@@ -18,8 +24,8 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter(Collision collision){
         if(collision.gameObject.tag == "Enemy"){
-            Debug.Log("damage goes here");
-            //do __ damage to enemy 
+            enemy = collision.gameObject.GetComponent<Enemy>();
+            enemy.hit();
         } 
      Destroy(this.gameObject);
     }

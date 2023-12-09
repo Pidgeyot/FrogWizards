@@ -7,7 +7,7 @@ public class WaspAnim : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log (gameObject.GetComponent<Animation>().Play());
     }
 
     // Update is called once per frame
