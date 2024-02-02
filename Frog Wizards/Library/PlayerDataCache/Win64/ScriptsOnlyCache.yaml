@@ -4,9 +4,11 @@ ScriptsOnlyBuild:
     - ButtonFunction
     - CharController
     - Collectibles
+    - Enemy
     - Inventory
     - PlaceCollectibles
     - Projectile
+    - WaspAnim
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
@@ -15,6 +17,12 @@ ScriptsOnlyBuild:
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
+    UnityEditor.Graphs.dll:
+    - UnityEditor.Graphs.AnimationBlendTree.Graph
+    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.Graph
+    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -101,29 +109,29 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1594}
+      Script: {instanceID: 1548}
     - Class: 114
-      Script: {instanceID: 2248}
+      Script: {instanceID: 1596}
     - Class: 114
-      Script: {instanceID: 2692}
+      Script: {instanceID: 2254}
     - Class: 114
-      Script: {instanceID: 2926}
+      Script: {instanceID: 2930}
     - Class: 114
-      Script: {instanceID: 3156}
+      Script: {instanceID: 3160}
     - Class: 114
-      Script: {instanceID: 3240}
+      Script: {instanceID: 3246}
     - Class: 114
-      Script: {instanceID: 4354}
+      Script: {instanceID: 4366}
     - Class: 114
-      Script: {instanceID: 4646}
+      Script: {instanceID: 4658}
     - Class: 114
-      Script: {instanceID: 5452}
+      Script: {instanceID: 5464}
     - Class: 114
-      Script: {instanceID: 6088}
+      Script: {instanceID: 6104}
     - Class: 114
-      Script: {instanceID: 6266}
+      Script: {instanceID: 6290}
     - Class: 114
-      Script: {instanceID: 6614}
+      Script: {instanceID: 6638}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -165,6 +173,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 82
@@ -173,34 +183,46 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
+    - Class: 90
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
+    - Class: 111
+      Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1594}
+      Script: {instanceID: 1548}
     - Class: 114
-      Script: {instanceID: 2692}
+      Script: {instanceID: 1596}
     - Class: 114
-      Script: {instanceID: 2926}
+      Script: {instanceID: 2930}
     - Class: 114
-      Script: {instanceID: 3742}
+      Script: {instanceID: 3750}
     - Class: 114
-      Script: {instanceID: 3812}
+      Script: {instanceID: 3820}
     - Class: 114
-      Script: {instanceID: 5452}
+      Script: {instanceID: 5226}
     - Class: 114
-      Script: {instanceID: 6088}
+      Script: {instanceID: 5464}
     - Class: 114
-      Script: {instanceID: 6164}
+      Script: {instanceID: 6104}
     - Class: 114
-      Script: {instanceID: 6266}
+      Script: {instanceID: 6180}
     - Class: 114
-      Script: {instanceID: 6614}
+      Script: {instanceID: 6290}
     - Class: 114
-      Script: {instanceID: 8002}
+      Script: {instanceID: 6638}
     - Class: 114
-      Script: {instanceID: 8460}
+      Script: {instanceID: 7394}
+    - Class: 114
+      Script: {instanceID: 8026}
+    - Class: 114
+      Script: {instanceID: 8484}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -234,6 +256,12 @@ ScriptsOnlyBuild:
     - Class: 224
       Script: {instanceID: 0}
   scriptHashData:
+  - hash:
+      serializedVersion: 2
+      Hash: cc4274b586df3c02688bac01b88bd16c
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.EventSystems
+    className: EventSystem
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -320,6 +348,18 @@ ScriptsOnlyBuild:
     className: CinemachineCollider
   - hash:
       serializedVersion: 2
+      Hash: 8dd0c28273a62808937fbb6f10782a1b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UIVirtualButton
+  - hash:
+      serializedVersion: 2
+      Hash: 448958487e291ad7edadde8695578942
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: StarterAssets
+    className: StarterAssetsInputs
+  - hash:
+      serializedVersion: 2
       Hash: bd50beb95120324d8c4e8386692b6e82
     assemblyName: Cinemachine.dll
     namespaceName: Cinemachine
@@ -378,12 +418,6 @@ ScriptsOnlyBuild:
     assemblyName: Cinemachine.dll
     namespaceName: Cinemachine
     className: CinemachineVirtualCamera
-  - hash:
-      serializedVersion: 2
-      Hash: cc4274b586df3c02688bac01b88bd16c
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.EventSystems
-    className: EventSystem
   - hash:
       serializedVersion: 2
       Hash: fe64a45214940b510a0ec79c96d43498
@@ -512,6 +546,12 @@ ScriptsOnlyBuild:
     className: ButtonFunction
   - hash:
       serializedVersion: 2
+      Hash: b52e7eadaa4fc0d662bed5475ddd9259
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: StarterAssets
+    className: FirstPersonController
+  - hash:
+      serializedVersion: 2
       Hash: 0fd6822f6177297bd0eb4d83cc7a9030
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -552,6 +592,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnScrollMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: ae5a0b23946ad462316ed69a6d8c273a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: StarterAssets
+    className: UICanvasControllerInput
   - hash:
       serializedVersion: 2
       Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
@@ -642,6 +688,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Collectibles
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MobileDisableAutoSwitchControls
   - hash:
       serializedVersion: 2
       Hash: 2574ac7d50617d23cdefe4ad22f5e1ad
@@ -926,6 +978,18 @@ ScriptsOnlyBuild:
     className: TMP_FontAsset
   - hash:
       serializedVersion: 2
+      Hash: 23501adfbc49de0d419848d5c1c7d11b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UIVirtualJoystick
+  - hash:
+      serializedVersion: 2
+      Hash: c3f649f50a44934d0c62b2bff7060274
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UIVirtualTouchZone
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
@@ -1032,6 +1096,18 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: AspectRatioFitter
+  - hash:
+      serializedVersion: 2
+      Hash: 0cf1a64f0be9502d0076e0afb6dea018
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BasicRigidBodyPush
+  - hash:
+      serializedVersion: 2
+      Hash: 58e68364412c67eae2bdb4954be2dcc2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Readme
   - hash:
       serializedVersion: 2
       Hash: 760787567e1b60d64a3e421ab83ee14a
@@ -1360,5 +1436,5 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/_Scenes/Scene_0.unity
   - Assets/_Scenes/Scene_1.unity
-  playerPath: C:/Users/pmabb/OneDrive/Desktop/School Documents/Capstone 451/FrogWizards/Frog
-    Wizards/Frog Wizards.exe
+  playerPath: C:/Users/pmabb/Desktop/School Documents/Capstone 452/FrogWizards/Frog
+    Wizards/Build/Frog Wizards.exe
