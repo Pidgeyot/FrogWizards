@@ -5,9 +5,20 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private int health = 5;
+    private GameObject charTarget;
+    private Collider targetCollider;
+    private GameObject attackTarget;
+    private Collider attackCollider;
+    private CharController charController;
+    void Start(){
+      charTarget = GameObject.Find("CharRange");
+      targetCollider = charTarget.GetComponent<Collider>();
+      attackTarget = GameObject.Find("FrogModel");
+      attackCollider = attackTarget.GetComponent<Collider>();
+      charController = GameObject.Find("Character").GetComponent<CharController>();
+    }
 
     void Update(){
-    
       if(health == 0){
             //run dying anim
             Destroy(gameObject);
@@ -23,9 +34,11 @@ public class Enemy : MonoBehaviour
 
     private bool InRangeOfPlayer()
     {
-      // If enemy collider is in contact with player sphere
-      // Return true if in range, false otherwise
-      return false;
+      if(this.GetComponent<Collider>().bounds.Intersects(targetCollider.bounds))
+      {
+        return true;
+      }
+       return false;
     }
 
     private void Wander()
@@ -36,18 +49,26 @@ public class Enemy : MonoBehaviour
 
     private void FollowPlayer()
     {
-      //move towards the player
-       if (true) //colliding with player controller collider
-        {
-          AttackPlayer();
-        }
+      // Move towards the player
+      Vector3 direction = charTarget.transform.position - transform.position;
+      transform.Translate(direction.normalized * 2 * Time.deltaTime);
+      
+      //check if player is in range to attack
+      if (this.GetComponent<Collider>().bounds.Intersects(attackCollider.bounds)) //colliding with player controller collider
+      {
+        Debug.Log("Player in range to attack");
+        AttackPlayer();
+      }
     }
 
     private void AttackPlayer()
     {
       //run attack anim
-      //if collliding with player/close enough
-      //deal damage to player
+      if (this.GetComponent<Collider>().bounds.Intersects(attackCollider.bounds)) //colliding with player controller collider
+        {
+          Debug.Log("Attacking player");
+          charController.removeHealth(2);        
+        }
     }
 
     public void hit(){

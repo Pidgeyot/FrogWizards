@@ -73,4 +73,9 @@ public class CharController : MonoBehaviour {
     private void CheckHealth(){
         healthSprite.sprite = Resources.Load<Sprite>("Health" + health);
     }
+
+    public int removeHealth(int damage){
+        health -= damage;
+        return health;
+    }
 }
