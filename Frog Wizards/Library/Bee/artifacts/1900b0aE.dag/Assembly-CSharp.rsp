@@ -363,7 +363,6 @@
 "Assets/_Scripts/CharController.cs"
 "Assets/_Scripts/Collectibles.cs"
 "Assets/_Scripts/Enemy.cs"
-"Assets/_Scripts/FirstPersonController.cs"
 "Assets/_Scripts/Inventory.cs"
 "Assets/_Scripts/MushAnim.cs"
 "Assets/_Scripts/PlaceCollectibles.cs"

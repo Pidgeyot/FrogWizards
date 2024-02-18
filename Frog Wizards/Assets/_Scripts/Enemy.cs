@@ -51,12 +51,15 @@ public class Enemy : MonoBehaviour
     {
       // Move towards the player
       Vector3 direction = charTarget.transform.position - transform.position;
+      direction.y = 0; // Set y component to 0
       transform.Translate(direction.normalized * 2 * Time.deltaTime);
       
       //check if player is in range to attack
       if (this.GetComponent<Collider>().bounds.Intersects(attackCollider.bounds)) //colliding with player controller collider
       {
-        Debug.Log("Player in range to attack");
+        //Debug.Log("Player in range to attack");
+        //stop movement:
+         transform.Translate(Vector3.zero);
         AttackPlayer();
       }
     }
@@ -66,7 +69,8 @@ public class Enemy : MonoBehaviour
       //run attack anim
       if (this.GetComponent<Collider>().bounds.Intersects(attackCollider.bounds)) //colliding with player controller collider
         {
-          Debug.Log("Attacking player");
+          //implement cooldown on attack
+          //Debug.Log("Attacking player");
           charController.removeHealth(2);        
         }
     }

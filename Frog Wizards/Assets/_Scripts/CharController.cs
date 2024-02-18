@@ -19,18 +19,22 @@ public class CharController : MonoBehaviour {
     public int health = 11;
     public int maxHealth = 11;
     private Image healthSprite;
+    private GameObject gameOver;
     
 
     void Start(){
         healthSprite = GameObject.Find("HealthSprite").GetComponent<Image>();
-        Debug.Log(healthSprite);
+        gameOver = GameObject.Find("GameOver");
+        gameOver.SetActive(false);
+        Debug.Log("Char Start Time.timeScale: " + Time.timeScale);
     }
 
     void Update(){
         Move();
         if(Input.GetMouseButtonDown(0)) LMBAttack();
         if(Input.GetMouseButtonDown(1)) RMBAttack();
-        CheckHealth();
+        LoadHealth();
+        CheckGameOver();
     }
 
     private void Move(){
@@ -70,12 +74,22 @@ public class CharController : MonoBehaviour {
         Debug.Log("RMB Attack");
     }
 
-    private void CheckHealth(){
-        healthSprite.sprite = Resources.Load<Sprite>("Health" + health);
+    private void LoadHealth(){
+        if(health > 0){
+            healthSprite.sprite = Resources.Load<Sprite>("Health" + health);
+        }
     }
 
     public int removeHealth(int damage){
         health -= damage;
         return health;
+    }
+
+    public void CheckGameOver(){
+        if(health <= 0){
+            Time.timeScale = 0;
+            gameOver.SetActive(true);
+            //set other canvas aspects to 1/2 alpha
+        }
     }
 }

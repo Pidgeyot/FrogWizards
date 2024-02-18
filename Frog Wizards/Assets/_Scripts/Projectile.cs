@@ -17,7 +17,8 @@ public class Projectile : MonoBehaviour
     {
         this.gameObject.GetComponent<Rigidbody>().velocity = -frogPos.transform.up * 10;
         timer += Time.deltaTime;
-        if (timer > 5){
+        Debug.Log(timer);
+        if (timer > 1){
             Destroy(this.gameObject);
         }
     }

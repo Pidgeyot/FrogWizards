@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class ButtonFunction : MonoBehaviour
 {
 
-    //private Canvas PauseFilm;
     private GameObject PauseFilm;
     private bool isPaused = false;
 
@@ -14,6 +13,7 @@ public class ButtonFunction : MonoBehaviour
         PauseFilm = GameObject.Find("PauseFilm");
         PauseFilm.SetActive(false);
         isPaused = false;
+        Time.timeScale = 1;
     }
     public void Update(){
         if(Input.GetKeyDown(KeyCode.Escape)&& !isPaused){
@@ -45,5 +45,9 @@ public class ButtonFunction : MonoBehaviour
     }
     public void loadMenu(){
         SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1;
+    }
+    public void retry(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
