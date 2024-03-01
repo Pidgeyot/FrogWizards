@@ -357,6 +357,7 @@
 "Assets/Mobile/Scripts/VirtualInputs/UIVirtualButton.cs"
 "Assets/Mobile/Scripts/VirtualInputs/UIVirtualJoystick.cs"
 "Assets/Mobile/Scripts/VirtualInputs/UIVirtualTouchZone.cs"
+"Assets/Scripts/ThirdPersonController.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"
 "Assets/_Scripts/BasicRigidBodyPush.cs"
 "Assets/_Scripts/ButtonFunction.cs"
