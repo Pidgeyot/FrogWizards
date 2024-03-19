@@ -24,11 +24,14 @@ public class ButtonFunction : MonoBehaviour
     }
     public void newGame(){
         SceneManager.LoadScene("Scene_1");
-        //clear session values
+        PlayerPrefs.SetInt("BellflowerCount", 0);
+        PlayerPrefs.SetInt("BluebellCount", 0);
+        PlayerPrefs.SetInt("FlyAgaricCount", 0);
+        PlayerPrefs.SetInt("IndigoMushroomCount", 0);
+        PlayerPrefs.SetInt("PeriwinkleCount", 0);
     }
     public void continueGame(){
         SceneManager.LoadScene("Scene_1");
-        //keep session values
     }
     public void exit(){
         Application.Quit();
@@ -37,17 +40,22 @@ public class ButtonFunction : MonoBehaviour
         PauseFilm.SetActive(true);
         isPaused = true;
         Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     public void resume(){
         PauseFilm.SetActive(false);
         isPaused = false;
         Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     public void loadMenu(){
         SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1;
     }
     public void retry(){
+        //set isDead from CharController back to false
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

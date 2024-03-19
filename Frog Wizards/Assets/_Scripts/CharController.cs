@@ -4,20 +4,11 @@ using UnityEngine.UI;
 
  
 public class CharController : MonoBehaviour {
-    public CharacterController charControl;
-    public Transform cam;
     public Transform frogPos;
     public GameObject projectile;
-    public float speed = 10;
-    public float turnSmooth = 0.1f;
-    float turnSmoothVel;
-    public float jumpForce = 10;
-    float vSpeed = 0;
-    float gravity = 9.8f;
-    //bool isGrounded;
-    Vector3 moveDir;
     public int health = 11;
     public int maxHealth = 11;
+    public bool isDead = false;
     private Image healthSprite;
     private GameObject gameOver;
     
@@ -30,40 +21,10 @@ public class CharController : MonoBehaviour {
     }
 
     void Update(){
-        Move();
         if(Input.GetMouseButtonDown(0)) LMBAttack();
         if(Input.GetMouseButtonDown(1)) RMBAttack();
         LoadHealth();
         CheckGameOver();
-    }
-
-    private void Move(){
-        float hMove = Input.GetAxis("Horizontal"); //take in horizontal
-        float vMove = Input.GetAxis("Vertical"); //and vertical axis' 
-
-        
-        Vector3 move = new Vector3(hMove, 0f, vMove).normalized;
-        float targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle,ref turnSmoothVel, turnSmooth);
-        transform.rotation = Quaternion.Euler(0f, angle, 0f);
-        //Vector3
-        moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-
-        if (charControl.isGrounded){
-            // grounded character has vSpeed = 0...
-            vSpeed = 0;
-            if (Input.GetKeyDown("space")){ // unless it jumps:
-            vSpeed = jumpForce;
-            }
-        }else{
-             // apply gravity acceleration to vertical speed:
-            vSpeed -= gravity * Time.deltaTime;
-            moveDir.y = vSpeed; // include vertical speed in vel
-        }
-
-        if (hMove != 0|| vMove != 0 || vSpeed != 0){
-        charControl.Move(speed * Time.deltaTime * moveDir.normalized); //use this transform to Move
-        }  
     }
 
     private void LMBAttack(){
@@ -86,10 +47,22 @@ public class CharController : MonoBehaviour {
     }
 
     public void CheckGameOver(){
-        if(health <= 0){
+        if(health <= 0 && isDead == false){ //this continues to run since its called in update continuously
+            isDead = true;
+            halfInventory();
             Time.timeScale = 0;
             gameOver.SetActive(true);
-            //set other canvas aspects to 1/2 alpha
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
+    }
+
+    private void halfInventory(){
+        PlayerPrefs.SetInt("BellflowerCount", PlayerPrefs.GetInt("BellflowerCount")/2);
+        PlayerPrefs.SetInt("BluebellCount", PlayerPrefs.GetInt("BluebellCount")/2);
+        PlayerPrefs.SetInt("FlyAgaricCount", PlayerPrefs.GetInt("FlyAgaricCount")/2);
+        PlayerPrefs.SetInt("IndigoMushroomCount", PlayerPrefs.GetInt("IndigoMushroomCount")/2);
+        PlayerPrefs.SetInt("PeriwinkleCount", PlayerPrefs.GetInt("PeriwinkleCount")/2);
+        PlayerPrefs.Save();
     }
 }

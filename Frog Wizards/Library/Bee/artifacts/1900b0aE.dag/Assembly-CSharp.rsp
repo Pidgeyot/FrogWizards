@@ -365,9 +365,11 @@
 "Assets/_Scripts/Collectibles.cs"
 "Assets/_Scripts/Enemy.cs"
 "Assets/_Scripts/Inventory.cs"
+"Assets/_Scripts/Movement.cs"
 "Assets/_Scripts/MushAnim.cs"
 "Assets/_Scripts/PlaceCollectibles.cs"
 "Assets/_Scripts/Projectile.cs"
+"Assets/_Scripts/ThirdPersonCam.cs"
 "Assets/_Scripts/WaspAnim.cs"
 -langversion:9.0
 
