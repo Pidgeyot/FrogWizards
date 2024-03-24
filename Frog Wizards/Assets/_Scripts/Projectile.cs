@@ -10,12 +10,12 @@ public class Projectile : MonoBehaviour
 
     void Start(){
         frogPos = GameObject.Find("FrogModel").GetComponent<Transform>();
+        this.gameObject.GetComponent<Rigidbody>().velocity = -frogPos.transform.up * 10;
     }
   
     // Update is called once per frame
     void Update()
     {
-        this.gameObject.GetComponent<Rigidbody>().velocity = -frogPos.transform.up * 10;
         timer += Time.deltaTime;
         Debug.Log(timer);
         if (timer > 1){

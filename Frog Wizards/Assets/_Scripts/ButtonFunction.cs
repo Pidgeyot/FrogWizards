@@ -55,7 +55,8 @@ public class ButtonFunction : MonoBehaviour
         Time.timeScale = 1;
     }
     public void retry(){
-        //set isDead from CharController back to false
+        CharController charControllerInstance = FindObjectOfType<CharController>(); // Find an instance of CharController
+        charControllerInstance.isDead = false; // Set the variable
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

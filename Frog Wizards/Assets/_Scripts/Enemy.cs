@@ -10,17 +10,21 @@ public class Enemy : MonoBehaviour
     private GameObject attackTarget;
     private Collider attackCollider;
     private CharController charController;
+    private Animator animator;
+
     void Start(){
       charTarget = GameObject.Find("CharRange");
       targetCollider = charTarget.GetComponent<Collider>();
       attackTarget = GameObject.Find("FrogModel");
-      attackCollider = attackTarget.GetComponent<Collider>();
+      attackCollider = attackTarget.GetComponent<BoxCollider>();
       charController = GameObject.Find("Character").GetComponent<CharController>();
+      animator = GetComponent<Animator>();
     }
 
     void Update(){
       if(health == 0){
-            //run dying anim
+            animator.Play("Death");
+            Wait(); //TODO: make this work
             Destroy(gameObject);
       }else if (InRangeOfPlayer())
       {
@@ -43,40 +47,50 @@ public class Enemy : MonoBehaviour
 
     private void Wander()
     {
-      // Implement wandering behavior within a specified range
-      //move in a small circle around point of origin
+      animator.SetBool("Walking", false);
     }
 
     private void FollowPlayer()
     {
+      animator.SetBool("Walking", true);
       // Move towards the player
       Vector3 direction = charTarget.transform.position - transform.position;
       direction.y = 0; // Set y component to 0
-      transform.Translate(direction.normalized * 2 * Time.deltaTime);
+
+      transform.Translate(direction.normalized * 2 * Time.deltaTime, Space.World);
       
+      if (direction != Vector3.zero) // Avoid LookAt when direction is zero to prevent erratic behavior
+      {
+        transform.rotation = Quaternion.LookRotation(direction);
+      }
+
       //check if player is in range to attack
       if (this.GetComponent<Collider>().bounds.Intersects(attackCollider.bounds)) //colliding with player controller collider
       {
-        //Debug.Log("Player in range to attack");
-        //stop movement:
-         transform.Translate(Vector3.zero);
+        //TODO: stop movement:
+        transform.Translate(Vector3.zero);
         AttackPlayer();
       }
     }
 
     private void AttackPlayer()
     {
-      //run attack anim
+      animator.SetTrigger("Attack");
       if (this.GetComponent<Collider>().bounds.Intersects(attackCollider.bounds)) //colliding with player controller collider
         {
-          //implement cooldown on attack
-          //Debug.Log("Attacking player");
+          //TODO: implement cooldown on attack; coincide with animation?
           charController.removeHealth(2);        
         }
     }
 
     public void hit(){
         health --;
+    }
+
+    private IEnumerator Wait()
+    {
+      //didn't work :(
+      yield return new WaitWhile(() => animator.GetCurrentAnimatorStateInfo(0).IsName("Death") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f);
     }
        
 }

@@ -23,6 +23,9 @@ public class CharController : MonoBehaviour {
     void Update(){
         if(Input.GetMouseButtonDown(0)) LMBAttack();
         if(Input.GetMouseButtonDown(1)) RMBAttack();
+    }
+
+    void FixedUpdate(){
         LoadHealth();
         CheckGameOver();
     }
@@ -47,7 +50,7 @@ public class CharController : MonoBehaviour {
     }
 
     public void CheckGameOver(){
-        if(health <= 0 && isDead == false){ //this continues to run since its called in update continuously
+        if(health <= 0 && isDead == false){
             isDead = true;
             halfInventory();
             Time.timeScale = 0;
