@@ -368,6 +368,7 @@
 "Assets/_Scripts/Movement.cs"
 "Assets/_Scripts/MushAnim.cs"
 "Assets/_Scripts/PlaceCollectibles.cs"
+"Assets/_Scripts/PlaceEnemies.cs"
 "Assets/_Scripts/Projectile.cs"
 "Assets/_Scripts/ThirdPersonCam.cs"
 "Assets/_Scripts/WaspAnim.cs"
