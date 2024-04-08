@@ -8,15 +8,17 @@ public class ButtonFunction : MonoBehaviour
 
     private GameObject PauseFilm;
     private bool isPaused = false;
+    private CharController charControllerInstance;
 
     public void Start(){
+        charControllerInstance = FindObjectOfType<CharController>();
         PauseFilm = GameObject.Find("PauseFilm");
         PauseFilm.SetActive(false);
         isPaused = false;
         Time.timeScale = 1;
     }
     public void Update(){
-        if(Input.GetKeyDown(KeyCode.Escape)&& !isPaused){
+        if(Input.GetKeyDown(KeyCode.Escape)&& !isPaused && charControllerInstance.isDead == false){
             pause();
         }else if(Input.GetKeyDown(KeyCode.Escape)&& isPaused){
             resume();
@@ -55,7 +57,6 @@ public class ButtonFunction : MonoBehaviour
         Time.timeScale = 1;
     }
     public void retry(){
-        CharController charControllerInstance = FindObjectOfType<CharController>(); // Find an instance of CharController
         charControllerInstance.isDead = false; // Set the variable
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
