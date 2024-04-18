@@ -9,15 +9,14 @@ public class Projectile : MonoBehaviour
     private Enemy enemy;
 
     void Start(){
-        frogPos = GameObject.Find("FrogModel").GetComponent<Transform>();
-        this.gameObject.GetComponent<Rigidbody>().velocity = -frogPos.transform.up * 10;
+        frogPos = GameObject.Find("ProjectileSpawn").GetComponent<Transform>();
+        this.gameObject.GetComponent<Rigidbody>().velocity = -frogPos.transform.forward * 10; 
     }
   
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
-        Debug.Log(timer);
         if (timer > 1){
             Destroy(this.gameObject);
         }

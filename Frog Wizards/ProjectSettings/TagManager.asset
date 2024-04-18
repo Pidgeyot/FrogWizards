@@ -10,6 +10,7 @@ TagManager:
   - IndigoMushroom
   - Periwinkle
   - Enemy
+  - CharRange
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Projectile
   - Ground
   - Environment
-  - 
+  - Camera
   - 
   - 
   - 

@@ -5,6 +5,7 @@ using UnityEngine.UI;
  
 public class CharController : MonoBehaviour {
     public Transform frogPos;
+    public Transform projectilePos;
     public GameObject projectile;
     public int health = 11;
     public int maxHealth = 11;
@@ -31,7 +32,7 @@ public class CharController : MonoBehaviour {
     }
 
     private void LMBAttack(){
-        Instantiate(projectile, frogPos.position + new Vector3(0, 0.5f, 0.5f), Quaternion.identity);
+        Instantiate(projectile, projectilePos.position, Quaternion.identity);
     }
 
     private void RMBAttack(){

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ButtonFunction : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class ButtonFunction : MonoBehaviour
     private GameObject PauseFilm;
     private bool isPaused = false;
     private CharController charControllerInstance;
+    private GameObject enemy;
+    private Image cButton;
 
     public void Start(){
         charControllerInstance = FindObjectOfType<CharController>();
@@ -16,12 +19,18 @@ public class ButtonFunction : MonoBehaviour
         PauseFilm.SetActive(false);
         isPaused = false;
         Time.timeScale = 1;
+        enemy = GameObject.Find("Tutorial_Wasp");
+        cButton = GameObject.Find("Click").GetComponent<Image>();
     }
     public void Update(){
         if(Input.GetKeyDown(KeyCode.Escape)&& !isPaused && charControllerInstance.isDead == false){
             pause();
         }else if(Input.GetKeyDown(KeyCode.Escape)&& isPaused){
             resume();
+        }
+        
+        if(enemy == null){
+            cButton.enabled = false;
         }
     }
     public void newGame(){

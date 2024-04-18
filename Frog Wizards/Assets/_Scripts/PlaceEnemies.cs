@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlaceEnemies : MonoBehaviour
 {
     public int currentEnemies = 0;
-    private int maxEnemies = 7;
+    private int maxEnemies = 20;
     // Start is called before the first frame update
     [Header("Enemy Models")]
     public GameObject[] enemies = new GameObject[2]; // Create an array of size 2
@@ -19,10 +19,10 @@ public class PlaceEnemies : MonoBehaviour
     }
     public Vector3 randomLocationGenerator()
     {
-        float minX = 6f;
-        float maxX = 50f;
-        float minZ = -15f;
-        float maxZ = 36f;
+        float minX = -237f;
+        float maxX = -75f;
+        float minZ = -50f;
+        float maxZ = 67f;
 
         Vector3 randomLocation = new Vector3();
         float randomX = Random.Range(minX, maxX);
